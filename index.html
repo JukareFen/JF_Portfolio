@@ -10,10 +10,10 @@
     <style>
         :root {
             --button-font-size: 1rem;
-            --button-padding: 16px 24px;
-            --button-border-radius: 30px;
+            --button-padding: 22.5px 24px;
+            --button-border-radius: 50px;
             --glass-bg: rgba(127.5, 127.5, 127.5, 0.07);
-            --glass-border: rgba(221.9, 221.9, 221.9, 0.4);
+            --glass-border: rgba(230, 230, 230, 0.492);
             --glass-shadow: 0 2px 2.7px rgba(0, 0, 0, 0.3);
             --glass-blur: 15px;
         }
@@ -36,18 +36,19 @@
             text-align: center;
             overflow: hidden;
             position: relative;
+            background: linear-gradient(135deg, #8f647a, #C48863, #9c6791);
         }
 
-        /* Animation de vagues en arrière-plan (plus visible) */
+        /* Animation de vagues en arrière-plan */
         body::before {
             content: "";
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
-            width: 200%;
-            height: 200%;
+            width: 100%;
+            height: 100%;
             background: linear-gradient(135deg, #5E3D4E 0%, #C48863 50%, #6C3C62 100%);
-            background-size: 200% 200%;
+            background-size: 400% 400%;
             animation: wave 15s ease-in-out infinite;
             z-index: -1;
             opacity: 1;
@@ -72,32 +73,33 @@
             flex-direction: column;
             gap: 8px;
             position: relative;
+            z-index: 1;
         }
 
         h1 {
-            font-size: calc(var(--button-font-size) * 3);
-            font-weight: 700;
+            font-size: calc(var(--button-font-size) * 5);
+            font-weight: 1000;
             margin-bottom: 8px;
         }
 
         .description {
-            font-size: calc(var(--button-font-size) * 1);
-            font-weight: 400;
+            font-size: calc(var(--button-font-size) * 2);
+            font-weight: 700;
             opacity: 0.9;
             margin-bottom: 8px;
         }
 
         .availability {
-            font-size: calc(var(--button-font-size) * 1);
+            font-size: calc(var(--button-font-size) * 2);
             font-weight: 400;
             opacity: 0.9;
-            margin-bottom: 32px;
+            margin-bottom: 100px;
         }
 
         .buttons {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 25px;
             width: 100%;
             max-width: 400px;
             margin: 0 auto;
@@ -238,31 +240,35 @@
 </head>
 <body>
     <div class="container">
-        <h1>Ju Fr</h1>
+        <h1>Justyne Fresnel</h1>
         <p class="description">Artiste 3D / Designer</p>
         <p class="availability">Disponible à partir d'octobre 2026</p>
         
+        
+
         <div class="buttons">
-            <a href="https://www.linkedin.com/in/ton-profil-linkedin/" class="button" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/LinkedIn_Logo.png" alt="LinkedIn" class="button-icon">
-                <span class="button-text">LinkedIn</span>
-            </a>
-            <a href="https://www.artstation.com/ton-profil-artstation" class="button" target="_blank">
-                <img src="https://assets.artstation.com/assets/artstation-logo-color-2021.svg" alt="ArtStation" class="button-icon">
-                <span class="button-text">ArtStation</span>
-            </a>
-            <a href="lien-vers-ton-cv.pdf" class="button" target="_blank">
+            <button class="button" id="contactButton">
+                <span class="button-icon">📩</span>
+                <span class="button-text">CONTACT</span>
+            </button>
+            <a href="ASSETS/2026_CV_FRESNEL_JUSTYNE.pdf" class="button" target="_blank">
                 <img src="lien-vers-ton-logo-cv" alt="CV" class="button-icon">
                 <span class="button-text">CV</span>
             </a>
-            <a href="https://www.youtube.com/watch?v=ton-id-video" class="button" target="_blank">
+            <a href="https://www.linkedin.com/in/justyne-fresnel" class="button" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/LinkedIn_Logo.png" alt="LinkedIn" class="button-icon">
+                <span class="button-text">LINKEDIN</span>
+            </a>
+            <a href="https://www.artstation.com/jukare" class="button" target="_blank">
+                <img src="https://assets.artstation.com/assets/artstation-logo-color-2021.svg" alt="ArtStation" class="button-icon">
+                <span class="button-text">ARTSTATION</span>
+            </a>
+
+            <!-- <a href="https://www.youtube.com/watch?v=ton-id-video" class="button" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="button-icon">
                 <span class="button-text">Showreel</span>
-            </a>
-            <button class="button" id="contactButton">
-                <span class="button-icon">📩</span>
-                <span class="button-text">Me contacter</span>
-            </button>
+            </a> -->
+            
         </div>
     </div>
 
@@ -286,7 +292,7 @@
 
     <script>
         // Remplace ces valeurs par les tiennes
-        const email = "ton-email@example.com";
+        const email = "justyne.fresnel@laposte.net";
         const phone = "+33 1 23 45 67 89";
 
         // Met à jour les textes affichés
