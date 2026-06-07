@@ -17,6 +17,9 @@
             --glass-border: rgba(230, 230, 230, 0.492);
             --glass-shadow: 0 2px 2.7px rgba(0, 0, 0, 0.3);
             --glass-blur: 15px;
+            --color-1: #8f647a;
+            --color-2: #C48863;
+            --color-3: #9c6791;
         }
 
         * {
@@ -36,11 +39,11 @@
             color: white;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, #8f647a, #C48863, #9c6791);
             overflow-y: auto;
+            background: linear-gradient(to bottom, var(--color-1), var(--color-3));
         }
 
-        /* Animation de vagues en arrière-plan */
+        /* Effet lampe à lave */
         body::before {
             content: "";
             position: fixed;
@@ -48,14 +51,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #5E3D4E 0%, #C48863 50%, #6C3C62 100%);
-            background-size: 400% 400%;
-            animation: wave 15s ease-in-out infinite;
+            background: 
+                radial-gradient(circle at 20% 80%, var(--color-2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--color-1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, var(--color-3) 0%, transparent 50%);
+            background-size: 200% 200%;
+            animation: lava 20s ease-in-out infinite;
             z-index: -1;
-            opacity: 1;
+            opacity: 0.8;
         }
 
-        @keyframes wave {
+        @keyframes lava {
             0% {
                 background-position: 0% 50%;
             }
@@ -64,6 +70,36 @@
             }
             100% {
                 background-position: 0% 50%;
+            }
+        }
+
+        /* Bulles pour effet lampe à lave */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.1) 0.5%, transparent 1%),
+                radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.1) 0.5%, transparent 1%),
+                radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0.5%, transparent 1%);
+            background-size: 100% 100%;
+            animation: bubbles 15s ease-in-out infinite;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        @keyframes bubbles {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
             }
         }
 
@@ -79,20 +115,21 @@
         }
 
         h1 {
-            font-size: calc(var(--button-font-size) * 5);
+            font-size: clamp(2rem, 8vw, 5rem); /* Taille responsive */
             font-weight: 1000;
             margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .description {
-            font-size: calc(var(--button-font-size) * 2);
+            font-size: clamp(1.2rem, 4vw, 2rem); /* Taille responsive */
             font-weight: 700;
             opacity: 0.9;
             margin-bottom: 8px;
         }
 
         .availability {
-            font-size: calc(var(--button-font-size) * 2);
+            font-size: clamp(1.2rem, 4vw, 2rem); /* Taille responsive */
             font-weight: 400;
             opacity: 0.9;
             margin-bottom: 100px;
@@ -109,7 +146,7 @@
 
         .button {
             font-family: 'Jost', sans-serif;
-            font-size: 24px;
+            font-size: clamp(1rem, 3vw, 1.5rem); /* Taille responsive */
             font-weight: 500;
             padding: var(--button-padding);
             border-radius: var(--button-border-radius);
@@ -139,8 +176,8 @@
         .button-icon {
             position: absolute;
             left: 16px;
-            width: 50px;
-            height: 50px;
+            width: clamp(30px, 8vw, 50px); /* Taille responsive */
+            height: clamp(30px, 8vw, 50px); /* Taille responsive */
         }
 
         .button-text {
@@ -195,7 +232,7 @@
             border: none;
             color: white;
             font-family: 'Jost', sans-serif;
-            font-size: 16px;
+            font-size: clamp(0.8rem, 2vw, 1rem); /* Taille responsive */
             font-weight: 500;
             padding: 8px 16px;
             border-radius: 15px;
@@ -211,7 +248,7 @@
 
         .contact-info {
             font-family: 'Jost', sans-serif;
-            font-size: 18px;
+            font-size: clamp(1rem, 2.5vw, 1.125rem); /* Taille responsive */
             font-weight: 400;
             color: white;
         }
@@ -219,32 +256,22 @@
         /* Responsive */
         @media (max-width: 600px) {
             body {
-                justify-content: flex-start; /* Permet le défilement sur mobile */
+                justify-content: flex-start;
             }
             .buttons {
                 width: 90%;
             }
             .button {
-                font-size: 20px;
                 padding: 14px 20px;
             }
             .button-icon {
-                width: 50px;
-                height: 50px;
                 left: 12px;
-            }
-            .copy-button {
-                font-size: 14px;
-                padding: 6px 12px;
-            }
-            .contact-info {
-                font-size: 16px;
             }
         }
 
         @media (min-width: 601px) {
             body {
-                justify-content: center; /* Centré verticalement sur desktop */
+                justify-content: center;
             }
         }
     </style>
@@ -278,7 +305,7 @@
     <!-- Modal pour les coordonnées -->
     <div class="contact-modal" id="contactModal">
         <div class="modal-content">
-            <h3 style="margin-bottom: 16px; font-size: 1.3em;">Choisis une option :</h3>
+            <h3 style="margin-bottom: 16px; font-size: clamp(1.2rem, 3vw, 1.3rem);">Choisis une option :</h3>
             <div class="contact-option" id="emailOption">
                 <button class="copy-button" id="copyEmail">Copier</button>
                 <span class="contact-info" id="emailText">mon@mail</span>
