@@ -17,7 +17,7 @@
             --glass-border: rgba(230, 230, 230, 0.492);
             --glass-shadow: 0 2px 2.7px rgba(0, 0, 0, 0.3);
             --glass-blur: 15px;
-            --color-1: #8f647a;
+            --color-1: rgb(144, 100, 123);
             --color-2: #C48863;
             --color-3: #9c6791;
         }
@@ -171,6 +171,8 @@
 
         .button:active {
             transform: translateY(0);
+            background: rgba(255, 255, 255, 0.2); /* Fond plus visible au toucher */
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* Contour lumineux au toucher 
         }
 
         .button-icon {
