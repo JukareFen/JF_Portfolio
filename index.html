@@ -31,13 +31,13 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: 20px;
             color: white;
             text-align: center;
-            overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #8f647a, #C48863, #9c6791);
+            overflow-y: auto;
         }
 
         /* Animation de vagues en arrière-plan */
@@ -75,6 +75,7 @@
             gap: 8px;
             position: relative;
             z-index: 1;
+            padding-bottom: 40px;
         }
 
         h1 {
@@ -217,6 +218,9 @@
 
         /* Responsive */
         @media (max-width: 600px) {
+            body {
+                justify-content: flex-start; /* Permet le défilement sur mobile */
+            }
             .buttons {
                 width: 90%;
             }
@@ -237,6 +241,12 @@
                 font-size: 16px;
             }
         }
+
+        @media (min-width: 601px) {
+            body {
+                justify-content: center; /* Centré verticalement sur desktop */
+            }
+        }
     </style>
 </head>
 <body>
@@ -245,8 +255,6 @@
         <p class="description">Artiste 3D / Designer</p>
         <p class="availability">Disponible à partir d'octobre 2026</p>
         
-        
-
         <div class="buttons">
             <button class="button" id="contactButton">
                 <img src="ASSETS/Contact.svg" alt="Contact" class="button-icon">
@@ -264,12 +272,6 @@
                 <img src="ASSETS/Artstation.svg" alt="ArtStation" class="button-icon">
                 <span class="button-text">ARTSTATION</span>
             </a>
-
-            <!-- <a href="https://www.youtube.com/watch?v=ton-id-video" class="button" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" alt="YouTube" class="button-icon">
-                <span class="button-text">Showreel</span>
-            </a> -->
-            
         </div>
     </div>
 
@@ -279,7 +281,7 @@
             <h3 style="margin-bottom: 16px; font-size: 1.3em;">Choisis une option :</h3>
             <div class="contact-option" id="emailOption">
                 <button class="copy-button" id="copyEmail">Copier</button>
-                <span class="contact-info" id="emailText">ton-email@example.com</span>
+                <span class="contact-info" id="emailText">mon@mail</span>
             </div>
             <div class="contact-option" id="phoneOption">
                 <button class="copy-button" id="copyPhone">Copier</button>
@@ -293,7 +295,7 @@
 
     <script>
         // Remplace ces valeurs par les tiennes
-        const email = "justyne.fresnel@laposte.net";
+        const email = "mon@mail";
         const phone = "+33 1 23 45 67 89";
 
         // Met à jour les textes affichés
