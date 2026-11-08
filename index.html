@@ -281,7 +281,7 @@
     <div class="container">
         <h1>Justyne Fresnel</h1>
         <p class="description">Artiste 3D / Designer</p>
-        <p class="availability">Disponible à partir d'octobre 2026</p>
+        <p class="availability">Disponible à partir dès novembre 2026</p>
         
         <div class="buttons">
             <button class="button" id="contactButton">
@@ -303,6 +303,10 @@
             <a href="https://www.artstation.com/jukare" class="button" target="_blank">
                 <img src="ASSETS/Artstation.svg" alt="ArtStation" class="button-icon">
                 <span class="button-text">ARTSTATION</span>
+            </a>
+            <a href="https://jukare.itch.io/" class="button" target="_blank">
+                <img src="ASSETS/Itchio.svg" alt="Itchio" class="button-icon">
+                <span class="button-text">ITCH.IO</span>
             </a>
         </div>
     </div>
@@ -328,17 +332,17 @@
     <script>
         // Remplace ces valeurs par les tiennes
         const email = "justyne.fresnel@laposte.net";
-        const phone = "+33 7 81 58 41 08";
+        //const phone = "+33 7 81 58 41 08";
 
         // Met à jour les textes affichés
         document.getElementById("emailText").textContent = email;
-        document.getElementById("phoneText").textContent = phone;
+        //document.getElementById("phoneText").textContent = phone;
 
         // Gestion de la modal de contact
         const contactButton = document.getElementById("contactButton");
         const contactModal = document.getElementById("contactModal");
         const copyEmail = document.getElementById("copyEmail");
-        const copyPhone = document.getElementById("copyPhone");
+        //const copyPhone = document.getElementById("copyPhone");
         const closeModal = document.getElementById("closeModal");
 
         contactButton.addEventListener("click", () => {
@@ -355,11 +359,11 @@
             });
         });
 
-        copyPhone.addEventListener("click", () => {
+        /*copyPhone.addEventListener("click", () => {
             navigator.clipboard.writeText(phone).then(() => {
                 alert("Téléphone copié dans le presse-papiers !");
-            });
-        });
+            })
+        });*/
 
         // Ferme la modal si on clique en dehors
         contactModal.addEventListener("click", (e) => {
